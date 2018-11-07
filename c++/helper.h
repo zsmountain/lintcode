@@ -1,3 +1,5 @@
+#ifndef HELPER
+#define HELPER
 #include <iostream>
 #include <ostream>
 #include <sstream>
@@ -248,3 +250,4 @@ ostream &operator<<(ostream &out, const unordered_map<T1, T2> &m) {
 }
 
 /**********************************************************************************************************************/
+#endif // HELPER
