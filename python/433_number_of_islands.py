@@ -53,7 +53,7 @@ class Solution:
 
     def isValid(self, grid, x, y):
         return 0 <= x < len(grid) and 0 <= y < len(grid[0]) and grid[x][y] == 1
-
+ 
 
 s = Solution()
 print(s.numIslands([
