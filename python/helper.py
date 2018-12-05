@@ -25,6 +25,58 @@ class LinkedList():
         print('None')
 
 
+################################### Graph ###################################
+'''
+How we serialize an undirected graph:
+
+Nodes are labeled uniquely.
+
+We use # as a separator for each node, and , as a separator for node label and each neighbor of the node.
+
+As an example, consider the serialized graph {0,1,2#1,2#2,2}.
+
+The graph has a total of three nodes, and therefore contains three parts as separated by #.
+
+First node is labeled as 0. Connect node 0 to both nodes 1 and 2.
+Second node is labeled as 1. Connect node 1 to node 2.
+Third node is labeled as 2. Connect node 2 to node 2 (itself), thus forming a self-cycle.
+Visually, the graph looks like the following:
+
+   1
+  / \
+ /   \
+0 --- 2
+     / \
+     \_/
+'''
+
+
+class DirectedGraphNode:
+  def __init__(self, x):
+      self.label = x
+      self.neighbors = []
+
+def createGraph(graph_str):
+  if not graph_str:
+    return {}
+
+  nodes = {}
+  nodes_str = graph_str.split('#')
+  for node_str in nodes_str:
+    values = node_str.split(',')
+    node = DirectedGraphNode(values[0])
+    nodes[values[0]] = node
+  
+  for node_str in nodes_str:
+    values = node_str.split(',')
+    for i in range(1, len(values)):
+      nodes[values[0]].neighbors.append(nodes[values[i]])
+
+  return [nodes[node] for node in nodes]
+        
+def printGraph(graph):
+  for node in graph:
+    print(node.label, [n.label for n in node.neighbors])
 ################################### Tree ###################################
 from copy import deepcopy as deepcopy
 import sys
