@@ -244,15 +244,15 @@ class TreeNode:
         if val_length > 1:
           if val_length % 2 == 1:  # odd
             if dash_count > 0:
-              dash_count -= ((val_length - 1)/2)
+              dash_count -= ((val_length - 1)//2)
             else:
-              spaces_mid -= (val_length - 1)/2
-              spaces_front -= (val_length - 1)/2
+              spaces_mid -= (val_length - 1)//2
+              spaces_front -= (val_length - 1)//2
               if val_length is not 1:
                 extra_spaces_next_node = True
           else:  # even
             if dash_count > 0:
-              dash_count -= ((val_length)/2) - 1
+              dash_count -= ((val_length)//2) - 1
               extra_spaces_next_node = True
               # dash_count += 1
             else:
@@ -306,6 +306,9 @@ def createTree(vals):
         is_left = not is_left
 
     return root
+
+def getSampleBstTree():
+  return createTree([8, 3, 10, 1, 6, '#', 14, '#', '#', 4, 7, 13])
 
 if __name__ == '__main__':
   # prep the tree...
