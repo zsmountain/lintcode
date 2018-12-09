@@ -47,7 +47,7 @@ class Solution:
 
     def dfs(self, root):
         if not root:
-            returng
+            return
         elif not root.left:
             self.dfs(root.right)
         elif not root.right:
