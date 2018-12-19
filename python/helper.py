@@ -24,6 +24,33 @@ class LinkedList():
             head = head.next
         print('None')
 
+################################### Trie ###################################
+
+class TrieNode():
+  def __init__(self):
+    self.children = {}
+    self.word = ''
+
+class Trie():
+  def __init__(self):
+    self.root = TrieNode()
+  
+  def insert(self, word):
+    node = self.root
+    for ch in word:
+      if ch not in node.children:
+        node.children[ch] = TrieNode()
+      node = node.children[ch]
+    node.word = word
+
+  def find(self, word):
+    node = self.root
+    for ch in word:
+      node = node.children.get(ch)
+      if node is None:
+        return False
+    return len(node.word) > 0
+
 
 ################################### Graph ###################################
 '''
