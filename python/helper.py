@@ -4,6 +4,12 @@ class ListNode(object):
         self.val = val
         self.next = next
 
+def printList(head):
+    while head:
+      print(head.val, '->', end=' ')
+      head = head.next
+    print('None')
+    
 class LinkedList():
     def __init__(self, l):
         if not l:
@@ -18,11 +24,7 @@ class LinkedList():
         self.head = head
 
     def print(self):
-        head = self.head
-        while head:
-            print(head.val, '->', end = ' ')
-            head = head.next
-        print('None')
+        printList(self.head)
 
 ################################### Trie ###################################
 
