@@ -73,4 +73,5 @@ class Solution:
             
 s = Solution()
 print(s.findMedian([[1], [], [2], [3], [3]]))
+print(s.findKth([[1, 2, 3, 4, 5, 6, 7]], 1, 7, 3))
 print(s.findMedian([[1, 20, 300, 401, 502, 6000, 7000]]))
