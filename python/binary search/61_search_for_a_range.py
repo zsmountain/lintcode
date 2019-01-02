@@ -1,35 +1,34 @@
 '''
-Given a target number and an integer array sorted in ascending order. Find the total number of occurrences of target in the array.
+Given a sorted array of n integers, find the starting and ending position of a given target value.
+
+If the target is not found in the array, return [-1, -1].
 
 Have you met this question in a real interview?  
 Example
-Given [1, 3, 3, 4, 5] and target = 3, return 2.
-
-Given [2, 2, 3, 4, 6] and target = 4, return 1.
-
-Given [1, 2, 3, 4, 5] and target = 6, return 0.
+Given [5, 7, 7, 8, 8, 10] and target value 8,
+return [3, 4].
 
 Challenge
-Time complexity in O(logn)
+O(log n) time.
 '''
 
 class Solution:
     """
-    @param A: A an integer array sorted in ascending order
-    @param target: An integer
-    @return: An integer
+    @param A: an integer sorted array
+    @param target: an integer to be inserted
+    @return: a list of length 2, [index1, index2]
     """
 
-    def totalOccurrence(self, A, target):
+    def searchRange(self, A, target):
         # write your code here
         if not A:
-            return 0
+            return [-1, -1]
         start, end = 0, len(A) - 1
         while start + 1 < end:
             mid = (start + end) // 2
             if A[mid] < target:
                 start = mid
-            elif A[mid] > target: 
+            elif A[mid] > target:
                 end = mid
             else:
                 left_end = right_start = mid
@@ -47,12 +46,16 @@ class Solution:
                     else:
                         right_start = mid
                 right = end if A[end] == target else right_start
-                return right - left + 1
-        return 1 if A[start] == target or A[end] == target else 0
+                return [left, right]
+        if A[start] == target:
+            return [start, start]
+        elif A[end] == target:
+            return [end, end]
+        else:
+            return [-1, -1]
 
 s = Solution()
-print(s.totalOccurrence([], 1))
-print(s.totalOccurrence([1], 1))
-print(s.totalOccurrence([1, 2, 3, 3, 4, 5], 3))
-print(s.totalOccurrence([2, 2, 3, 4, 6], 4))
-print(s.totalOccurrence([1, 2, 3, 4, 5], 6))
+A = [1]
+print(s.searchRange(A, 1))
+A = [5, 7, 7, 8, 8, 10]
+print(s.searchRange(A, 8))
