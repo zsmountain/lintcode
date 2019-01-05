@@ -32,9 +32,16 @@ class TreeNode:
         self.val = val
         self.left, self.right = None, None
 """
-import helper
-TreeNode = helper.TreeNode
-createTree = helper.createTree
+
+def load_src(name, fpath):
+    import os
+    import imp
+    return imp.load_source(name, os.path.join(os.path.dirname(__file__), fpath))
+
+
+load_src("helper", "../helper.py")
+
+from helper import TreeNode, createTree
 
 from collections import deque
 
