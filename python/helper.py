@@ -80,6 +80,11 @@ Visually, the graph looks like the following:
 '''
 
 
+class UndirectedGraphNode:
+    def __init__(self, x):
+        self.label = x
+        self.neighbors = []
+
 class DirectedGraphNode:
   def __init__(self, x):
       self.label = x
