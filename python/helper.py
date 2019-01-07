@@ -115,6 +115,11 @@ def printGraph(graph):
 from copy import deepcopy as deepcopy
 import sys
 
+class ParentTreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.parent, self.left, self.right = None, None, None
+
 class Queue(object):
   def __init__(self, items=None):
     if items is None:
