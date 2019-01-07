@@ -32,6 +32,13 @@ while iterator.hasNext():
     do something for node 
 """
 
+
+def load_src(name, fpath):
+    import os
+    import imp
+    return imp.load_source(name, os.path.join(os.path.dirname(__file__), fpath))
+
+load_src("helper", "../helper.py")
 from helper import TreeNode, getSampleBstTree
 
 class BSTIterator:
